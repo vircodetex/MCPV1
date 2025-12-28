@@ -5,9 +5,6 @@ import { normalizeCity } from "./utils";
 
 console.log(`process.env.NODE_ENV 1 =  ${process.env.NODE_ENV}`);
 console.log(`process.env.PORT 1 =  ${process.env.PORT}`);
-if (process.env.NODE_ENV === "production") {
-    delete process.env.PORT;
-}
 
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
@@ -15,17 +12,13 @@ if (process.env.NODE_ENV !== "production") {
 
 console.log(`process.env.NODE_ENV 2 =  ${process.env.NODE_ENV}`);
 console.log(`process.env.PORT 2 =  ${process.env.PORT}`);
-if (process.env.NODE_ENV === "production") {
-    delete process.env.PORT;
-}
+
 
 const app = express();
 
 console.log(`process.env.NODE_ENV 3 =  ${process.env.NODE_ENV}`);
 console.log(`process.env.PORT 3 =  ${process.env.PORT}`);
-if (process.env.NODE_ENV === "production") {
-    delete process.env.PORT;
-}
+
 
 const port = process.env.PORT || 3000;
 
