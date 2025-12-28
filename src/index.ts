@@ -1,10 +1,11 @@
 import express from "express";
-import dotenv from "dotenv";
 import { getPopulation } from "./populationClient";
 import { getCityDescription } from "./ragStore";
 import { normalizeCity } from "./utils";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
 
 const app = express();
 const port = process.env.PORT || 3000;
