@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Seattle",
+        "description": "Seattle is a major seaport city in the U.S. state of Washington, known for its tech industry and coffee culture."
+    },
+    {
+        "name": "New York",
+        "description": "New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. It's a global hub for finance, culture, and media."
+    },
+    {
+        "name": "San Francisco",
+        "description": "San Francisco is known for the Golden Gate Bridge, Victorian houses, and a strong tech startup scene."
+    },
+    {
+        "name": "London",
+        "description": "London is the capital of England and the United Kingdom, known for its history, museums, and diverse culture."
+    }
+]
