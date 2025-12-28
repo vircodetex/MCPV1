@@ -3,12 +3,30 @@ import { getPopulation } from "./populationClient";
 import { getCityDescription } from "./ragStore";
 import { normalizeCity } from "./utils";
 
+console.log(`process.env.NODE_ENV 1 =  ${process.env.NODE_ENV}`);
+if (process.env.NODE_ENV === "production") {
+    delete process.env.PORT;
+}
+
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
 
+console.log(`process.env.NODE_ENV 2 =  ${process.env.NODE_ENV}`);
+if (process.env.NODE_ENV === "production") {
+    delete process.env.PORT;
+}
+
 const app = express();
+
+console.log(`process.env.NODE_ENV 3 =  ${process.env.NODE_ENV}`);
+if (process.env.NODE_ENV === "production") {
+    delete process.env.PORT;
+}
+
 const port = process.env.PORT || 3000;
+
+console.log(`MCP server 0 listening on port ${port}`);
 
 app.get("/mcp/population", async (req, res) => {
     const cityRaw = String(req.query.city || "");
