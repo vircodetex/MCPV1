@@ -7,7 +7,7 @@ import { normalizeCity } from "./utils";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT ? Number(process.env.PORT) : 4000;
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 app.get("/mcp/population", async (req, res) => {
     const cityRaw = String(req.query.city || "");
