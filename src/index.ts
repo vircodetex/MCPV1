@@ -3,26 +3,15 @@ import { getPopulation } from "./populationClient";
 import { getCityDescription } from "./ragStore";
 import { normalizeCity } from "./utils";
 
-console.log(`process.env.NODE_ENV 1 =  ${process.env.NODE_ENV}`);
-console.log(`process.env.PORT 1 =  ${process.env.PORT}`);
+console.log(`process.env.NODE_ENV =  ${process.env.NODE_ENV}`);
 
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
 
-console.log(`process.env.NODE_ENV 2 =  ${process.env.NODE_ENV}`);
-console.log(`process.env.PORT 2 =  ${process.env.PORT}`);
-
-
 const app = express();
 
-console.log(`process.env.NODE_ENV 3 =  ${process.env.NODE_ENV}`);
-console.log(`process.env.PORT 3 =  ${process.env.PORT}`);
-
-
 const port = process.env.PORT || 3000;
-
-console.log(`MCP server 0 listening on port ${port}`);
 
 app.get("/mcp/population", async (req, res) => {
     const cityRaw = String(req.query.city || "");
@@ -72,6 +61,31 @@ app.get("/mcp/capabilities", (_req, res) => {
         ]
     });
 });
+
+app.get("/.well-known/mcp.json", (_req, res) => {
+    res.json({
+        version: "1.0.0",
+        capabilities: {
+            tools: {
+                endpoints: [
+                    {
+                        name: "population",
+                        method: "GET",
+                        path: "/mcp/population",
+                        query: { city: "string" }
+                    },
+                    {
+                        name: "description",
+                        method: "GET",
+                        path: "/mcp/description",
+                        query: { city: "string" }
+                    }
+                ]
+            }
+        }
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`MCP server listening on port ${port}`);
