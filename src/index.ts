@@ -35,20 +35,24 @@ app.get("/mcp/description", async (req, res) => {
 
 app.get("/mcp/capabilities", (_req, res) => {
     res.json({
-        service: "MCP",
-        version: process.env.npm_package_version || "unknown",
-        endpoints: [
+        capabilities: [
             {
-                path: "/mcp/population",
-                method: "GET",
-                query: { city: "string (required)" },
-                description: "Returns population info for a normalized city"
-            },
-            {
-                path: "/mcp/description",
-                method: "GET",
-                query: { city: "string (required)" },
-                description: "Returns a textual description for a normalized city"
+                service: "MCP",
+                version: process.env.npm_package_version || "unknown",
+                endpoints: [
+                    {
+                        path: "/mcp/population",
+                        method: "GET",
+                        query: { city: "string (required)" },
+                        description: "Returns population info for a normalized city"
+                    },
+                    {
+                        path: "/mcp/description",
+                        method: "GET",
+                        query: { city: "string (required)" },
+                        description: "Returns a textual description for a normalized city"
+                    }
+                ]
             }
         ]
     });
